@@ -1,0 +1,1 @@
+This is a directory which is used to store files to be saved to HDFS when the app runs locally.

@@ -1,0 +1,6 @@
+
+.DS_Store
+.idea
+the-board/volume-data/datanode
+the-board/volume-data/namenode
+the-board/volume-data/spark
