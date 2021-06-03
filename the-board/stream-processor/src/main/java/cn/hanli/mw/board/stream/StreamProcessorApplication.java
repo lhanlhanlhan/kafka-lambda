@@ -29,8 +29,8 @@ public class StreamProcessorApplication {
 
     public static void main(String[] args) throws Exception {
         // 读取配置文件
-        // String property = "spark-local";
-        String property = "spark";
+        String property = "spark-local";
+        // String property = "spark";
         Properties prop = PropertyFileReader.getProperties(property);
         // 创建 Stream 并启动
         new StreamProcessorApplication().start(prop);
@@ -46,7 +46,7 @@ public class StreamProcessorApplication {
         Map<String, Object> kafkaConf = getKafkaConf(prop);
         SparkConf sparkConf = getSparkConf(prop);
         // TODO - remove
-        // sparkConf.set("spark.driver.bindAddress", "127.0.0.1");
+        sparkConf.set("spark.driver.bindAddress", "127.0.0.1");
 
         // 2. 新建 StreamingContext
         JavaStreamingContext context = new JavaStreamingContext(sparkConf, Durations.seconds(5));

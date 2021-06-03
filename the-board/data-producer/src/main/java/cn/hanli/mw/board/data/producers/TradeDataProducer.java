@@ -40,7 +40,7 @@ public class TradeDataProducer implements KafkaProducer {
             producer.send(new KeyedMessage<>(topic, data));
 
             // 睡觉
-            long sleepTime = Randomise.getLong(1000, 2000);
+            long sleepTime = Randomise.getLong(100, 500);
             Thread.sleep(sleepTime);
         }
     }
