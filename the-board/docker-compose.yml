@@ -35,14 +35,15 @@ services:
       - 9092:9092
     depends_on:
       - zookeeper
-    environment:
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://127.0.0.1:9092
-      KAFKA_ZOOKEEPER_CONNECT: "zookeeper:2181"
-      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
     networks:
       net:
         # 固定 IP 地址
         ipv4_address: 172.22.0.2
+    environment:
+      # 此处填写主机网卡 IP 地址 (例如公网 IP)！
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://192.168.0.106:9092
+      KAFKA_ZOOKEEPER_CONNECT: "zookeeper:2181"
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
     restart: always
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
@@ -77,13 +78,13 @@ services:
       - "7077:7077"
       - "4040:4040"
       - "4041:4041"
-    environment:
-      - INIT_DAEMON_STEP=false
-      - SPARK_DRIVER_HOST=192.168.1.5
     networks:
       net:
         # 固定 IP 地址
         ipv4_address: 172.22.0.4
+    environment:
+      - INIT_DAEMON_STEP=false
+      - SPARK_DRIVER_HOST=192.168.1.5
     volumes:
       - ./stream-processor/src/main/resources:/opt/spark-data
       - ./stream-processor/target:/app
@@ -97,12 +98,12 @@ services:
       - spark-master
     ports:
       - "8081:8081"
-    environment:
-      - "SPARK_MASTER=spark://spark-master:7077"
     networks:
       net:
         # 固定 IP 地址
         ipv4_address: 172.22.0.5
+    environment:
+      - "SPARK_MASTER=spark://spark-master:7077"
     volumes:
       - ./volume-data/spark/:/opt/spark-data
 
@@ -111,9 +112,6 @@ services:
     container_name: b-hadoop-namenode
     image: bde2020/hadoop-namenode:1.1.0-hadoop2.8-java8
     hostname: namenode
-    environment:
-      - CLUSTER_NAME=test
-      - CORE_CONF_fs_defaultFS=hdfs://namenode:8020
     healthcheck:
       interval: 5s
       retries: 100
@@ -124,6 +122,9 @@ services:
     ports:
       - 50070:50070
       - 8020:8020
+    environment:
+      - CLUSTER_NAME=test
+      - CORE_CONF_fs_defaultFS=hdfs://namenode:8020
     volumes:
       - ./volume-data/namenode:/hadoop/dfs/name
 
@@ -132,9 +133,6 @@ services:
     container_name: b-hadoop-datanode
     image: bde2020/hadoop-datanode:1.1.0-hadoop2.8-java8
     hostname: datanode
-    environment:
-      # 设置 HDFS 的路径 (core-site.xml 中的 fs.defaultFS)
-      - CORE_CONF_fs_defaultFS=hdfs://namenode:8020
     depends_on:
       - namenode
     healthcheck:
@@ -147,8 +145,8 @@ services:
     ports:
       - 50075:50075
       - 50010:50010
+    environment:
+      # 设置 HDFS 的路径 (core-site.xml 中的 fs.defaultFS)
+      - CORE_CONF_fs_defaultFS=hdfs://namenode:8020
     volumes:
       - ./volume-data/datanode:/hadoop/dfs/data
-
-
-
