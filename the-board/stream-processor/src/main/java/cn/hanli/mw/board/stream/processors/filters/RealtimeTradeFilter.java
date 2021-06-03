@@ -11,7 +11,7 @@ import org.apache.spark.streaming.StateSpec;
 import org.apache.spark.streaming.api.java.JavaDStream;
 import scala.Tuple2;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.HashMap;
 
 import static com.datastax.spark.connector.japi.CassandraStreamingJavaUtil.javaFunctions;
@@ -57,7 +57,7 @@ public class RealtimeTradeFilter {
                     CityTotalTradeNumber totalTrade = new CityTotalTradeNumber();
                     totalTrade.setCity(cityTradeSum._1);
                     totalTrade.setTotalTradeNumber(cityTradeSum._2);
-                    totalTrade.setUpdateTime(LocalDateTime.now());
+                    totalTrade.setUpdateTime(new Date());
                     return totalTrade;
                 });
 
@@ -71,7 +71,7 @@ public class RealtimeTradeFilter {
                     CityTotalTradeAmount totalAmount = new CityTotalTradeAmount();
                     totalAmount.setCity(cityAmountSum._1);
                     totalAmount.setTotalAmount(cityAmountSum._2);
-                    totalAmount.setUpdateTime(LocalDateTime.now());
+                    totalAmount.setUpdateTime(new Date());
                     return totalAmount;
                 });
 

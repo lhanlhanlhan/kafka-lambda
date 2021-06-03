@@ -12,6 +12,8 @@ import org.apache.spark.streaming.api.java.JavaDStream;
 import org.apache.spark.streaming.kafka010.HasOffsetRanges;
 import org.apache.spark.streaming.kafka010.OffsetRange;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -54,11 +56,15 @@ public class TradeStreamProcessor extends KafkaStreamProcessor<TradeData> {
                     TradeData dataItem = next.value();
                     // 制作 metadata
                     Map<String, String> meta = new HashMap<>();
+                    LocalDateTime timestamp = dataItem.getTimestamp()
+                            .toInstant()
+                            .atZone(ZoneId.of("Asia/Hong_Kong"))
+                            .toLocalDateTime();
                     meta.put("topic", offsetRanges[index].topic());
                     meta.put("fromOffset", "" + offsetRanges[index].fromOffset());
                     meta.put("kafkaPartition", "" + offsetRanges[index].partition());
                     meta.put("untilOffset", "" + offsetRanges[index].untilOffset());
-                    meta.put("dayOfWeek", "" + dataItem.getTimestamp().toLocalDate().getDayOfWeek().getValue());
+                    meta.put("dayOfWeek", "" + timestamp.getDayOfWeek().getValue());
                     // 设置数据的 metadata
                     dataItem.setMetadata(meta);
                     list.add(dataItem);
@@ -68,6 +74,8 @@ public class TradeStreamProcessor extends KafkaStreamProcessor<TradeData> {
         });
         this.setStream(stream);
     }
+
+    public void end() {}
 
     /*
      * 流 => Parquet File

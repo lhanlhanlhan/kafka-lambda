@@ -37,6 +37,12 @@
             <artifactId>jackson-annotations</artifactId>
             <version>2.12.1</version>
         </dependency>
+        <!-- JSR310 数据类型支持 -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>2.11.4</version>
+        </dependency>
         <!-- Logger -->
         <dependency>
             <groupId>log4j</groupId>

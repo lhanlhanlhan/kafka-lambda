@@ -6,7 +6,6 @@ import kafka.javaapi.producer.Producer;
 import kafka.producer.KeyedMessage;
 import kafka.producer.ProducerConfig;
 
-import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -35,7 +34,7 @@ public class TradeDataProducer implements KafkaProducer {
             data.setAmount(this.genAmount());
             data.setDeviceType(this.genDevice());
             data.setPayToolType(this.genPayTool());
-            data.setTimestamp(LocalDateTime.now());
+            data.setTimestamp(new Date());
 
             // 投喂新数据
             producer.send(new KeyedMessage<>(topic, data));
@@ -68,7 +67,7 @@ public class TradeDataProducer implements KafkaProducer {
     }
 
     private final long[] amountMinBounds = new long[] {
-            500L, 1000L, 5000L, 10000L,
+            0L, 1000L, 5000L, 10000L,
             50000L, 100000L, 500000L, 1000000L
     };
 

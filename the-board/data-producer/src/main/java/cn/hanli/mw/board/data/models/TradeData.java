@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.UUID;
 
@@ -25,7 +24,7 @@ public class TradeData implements Serializable {
     private final String tradeId;
     private Long amount;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone="HKT")
-    private LocalDateTime timestamp;
+    private Date timestamp;
 
     // 设备、支付信息
     private String deviceType;

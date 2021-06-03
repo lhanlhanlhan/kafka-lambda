@@ -1,6 +1,11 @@
 
 .DS_Store
 .idea
+target
+
 the-board/volume-data/datanode
 the-board/volume-data/namenode
 the-board/volume-data/spark
+
+fake-hdfs/board-data-parquet
+tmp-files/spark-chkpnt/

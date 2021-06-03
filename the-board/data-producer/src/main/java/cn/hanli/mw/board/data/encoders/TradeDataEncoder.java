@@ -19,8 +19,7 @@ public class TradeDataEncoder implements Encoder<TradeData> {
 
     private static final ObjectMapper om = new ObjectMapper();
 
-    public TradeDataEncoder(VerifiableProperties vp) {
-    }
+    public TradeDataEncoder(VerifiableProperties vp) { }
 
     @Override
     public byte[] toBytes(TradeData tradeData) {
