@@ -20,7 +20,9 @@ services:
     ports:
       - 2181:2181
     networks:
-      - net
+      net:
+        # 固定 IP 地址
+        ipv4_address: 172.22.0.1
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
 
@@ -38,7 +40,9 @@ services:
       KAFKA_ZOOKEEPER_CONNECT: "zookeeper:2181"
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
     networks:
-      - net
+      net:
+        # 固定 IP 地址
+        ipv4_address: 172.22.0.2
     restart: always
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
@@ -51,7 +55,7 @@ services:
     networks:
       net:
         # 固定 IP 地址
-        ipv4_address: 172.22.0.6
+        ipv4_address: 172.22.0.3
     ports:
       - "9042:9042"
     environment:
@@ -77,9 +81,12 @@ services:
       - INIT_DAEMON_STEP=false
       - SPARK_DRIVER_HOST=192.168.1.5
     networks:
-      - net
+      net:
+        # 固定 IP 地址
+        ipv4_address: 172.22.0.4
     volumes:
       - ./stream-processor/src/main/resources:/opt/spark-data
+      - ./stream-processor/target:/app
 
   # Spark Worker 节点 #
   spark-worker-1:
@@ -93,7 +100,9 @@ services:
     environment:
       - "SPARK_MASTER=spark://spark-master:7077"
     networks:
-      - net
+      net:
+        # 固定 IP 地址
+        ipv4_address: 172.22.0.5
     volumes:
       - ./volume-data/spark/:/opt/spark-data
 
@@ -109,7 +118,9 @@ services:
       interval: 5s
       retries: 100
     networks:
-      - net
+      net:
+        # 固定 IP 地址
+        ipv4_address: 172.22.0.6
     ports:
       - 50070:50070
       - 8020:8020
@@ -130,7 +141,9 @@ services:
       interval: 5s
       retries: 100
     networks:
-      - net
+      net:
+        # 固定 IP 地址
+        ipv4_address: 172.22.0.7
     ports:
       - 50075:50075
       - 50010:50010

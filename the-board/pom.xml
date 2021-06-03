@@ -10,7 +10,6 @@
     <modules>
         <module>data-producer</module>
         <module>stream-processor</module>
-        <module>the-board-common</module>
     </modules>
 
     <properties>
