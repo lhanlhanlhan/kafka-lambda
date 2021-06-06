@@ -1,11 +1,10 @@
-package cn.hanli.mw.board.stream.processors.entities;
+package cn.hanli.mv.board.models.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 
 /**

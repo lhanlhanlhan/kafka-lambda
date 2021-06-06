@@ -10,7 +10,7 @@ import org.apache.spark.streaming.api.java.JavaDStream;
  * Created at 2/6/2021 8:53 上午
  * Modified by Han Li at 2/6/2021 8:53 上午
  */
-public abstract class KafkaStreamProcessor<DataClass> {
+public abstract class SparkStreamProcessor<DataClass> {
 
     @Getter
     private final JavaDStream<ConsumerRecord<String, DataClass>> srcStream;
@@ -23,7 +23,7 @@ public abstract class KafkaStreamProcessor<DataClass> {
      * 创建流处理器并指定源流
      * @param srcStream 源流 (Kafka 类型)
      */
-    public KafkaStreamProcessor(JavaDStream<ConsumerRecord<String, DataClass>> srcStream) {
+    public SparkStreamProcessor(JavaDStream<ConsumerRecord<String, DataClass>> srcStream) {
         this.srcStream = srcStream;
         this.prepare();
     }

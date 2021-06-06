@@ -20,9 +20,7 @@ services:
     ports:
       - 2181:2181
     networks:
-      net:
-        # 固定 IP 地址
-        ipv4_address: 172.22.0.1
+      - net
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
 
@@ -36,12 +34,10 @@ services:
     depends_on:
       - zookeeper
     networks:
-      net:
-        # 固定 IP 地址
-        ipv4_address: 172.22.0.2
+      - net
     environment:
       # 此处填写主机网卡 IP 地址 (例如公网 IP)！
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://192.168.0.106:9092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://59.77.13.234:9092
       KAFKA_ZOOKEEPER_CONNECT: "zookeeper:2181"
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
     restart: always
@@ -55,8 +51,8 @@ services:
     hostname: cassandra
     networks:
       net:
-        # 固定 IP 地址
-        ipv4_address: 172.22.0.3
+        # 固定 IP 地址 - ip 定大一点
+        ipv4_address: 172.22.0.197
     ports:
       - "9042:9042"
     environment:
@@ -79,9 +75,7 @@ services:
       - "4040:4040"
       - "4041:4041"
     networks:
-      net:
-        # 固定 IP 地址
-        ipv4_address: 172.22.0.4
+      - net
     environment:
       - INIT_DAEMON_STEP=false
       - SPARK_DRIVER_HOST=192.168.1.5
@@ -99,9 +93,7 @@ services:
     ports:
       - "8081:8081"
     networks:
-      net:
-        # 固定 IP 地址
-        ipv4_address: 172.22.0.5
+      - net
     environment:
       - "SPARK_MASTER=spark://spark-master:7077"
     volumes:
@@ -116,9 +108,7 @@ services:
       interval: 5s
       retries: 100
     networks:
-      net:
-        # 固定 IP 地址
-        ipv4_address: 172.22.0.6
+      - net
     ports:
       - 50070:50070
       - 8020:8020
@@ -139,9 +129,7 @@ services:
       interval: 5s
       retries: 100
     networks:
-      net:
-        # 固定 IP 地址
-        ipv4_address: 172.22.0.7
+      - net
     ports:
       - 50075:50075
       - 50010:50010

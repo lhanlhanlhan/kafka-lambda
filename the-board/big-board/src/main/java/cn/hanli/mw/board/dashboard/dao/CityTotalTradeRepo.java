@@ -2,7 +2,6 @@ package cn.hanli.mw.board.dashboard.dao;
 
 import cn.hanli.mw.board.dashboard.models.CityTotalTradeData;
 import org.springframework.data.cassandra.repository.CassandraRepository;
-import org.springframework.data.cassandra.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.Date;

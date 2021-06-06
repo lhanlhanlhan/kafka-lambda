@@ -1,6 +1,6 @@
 package cn.hanli.mw.board.data.encoders;
 
-import cn.hanli.mw.board.data.models.TradeData;
+import cn.hanli.mv.board.models.TradeData;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import kafka.serializer.Encoder;

@@ -9,3 +9,5 @@ the-board/volume-data/spark
 
 fake-hdfs/board-data-parquet
 tmp-files/spark-chkpnt/
+
+dist

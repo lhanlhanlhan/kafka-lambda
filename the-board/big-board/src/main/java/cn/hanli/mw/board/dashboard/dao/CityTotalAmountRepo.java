@@ -1,7 +1,6 @@
 package cn.hanli.mw.board.dashboard.dao;
 
 import cn.hanli.mw.board.dashboard.models.CityTotalAmountData;
-import cn.hanli.mw.board.dashboard.models.CityTotalTradeData;
 import org.springframework.data.cassandra.repository.CassandraRepository;
 import org.springframework.stereotype.Repository;
 
@@ -15,5 +14,4 @@ import java.util.UUID;
 @Repository
 public interface CityTotalAmountRepo
         extends CassandraRepository<CityTotalAmountData, UUID> {
-
 }

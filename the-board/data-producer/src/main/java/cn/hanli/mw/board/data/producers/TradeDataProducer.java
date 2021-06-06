@@ -1,15 +1,12 @@
 package cn.hanli.mw.board.data.producers;
 
-import cn.hanli.mw.board.data.models.TradeData;
+import cn.hanli.mv.board.models.TradeData;
 import cn.hanli.mw.board.data.utils.Randomise;
 import kafka.javaapi.producer.Producer;
 import kafka.producer.KeyedMessage;
 import kafka.producer.ProducerConfig;
 
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
-import java.util.Properties;
+import java.util.*;
 
 /**
  * @author Han Li
@@ -30,6 +27,7 @@ public class TradeDataProducer implements KafkaProducer {
         while (true) {
             // 生成新数据
             TradeData data = new TradeData();
+            data.setTradeId(UUID.randomUUID().toString());
             data.setCity(this.genCity());
             data.setAmount(this.genAmount());
             data.setDeviceType(this.genDevice());

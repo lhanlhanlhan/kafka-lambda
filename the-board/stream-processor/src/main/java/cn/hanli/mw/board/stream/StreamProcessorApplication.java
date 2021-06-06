@@ -2,7 +2,7 @@ package cn.hanli.mw.board.stream;
 
 import cn.hanli.mw.board.stream.callbacks.OnTradeOffsetCommitted;
 import cn.hanli.mw.board.stream.decoders.TradeDataDecoder;
-import cn.hanli.mw.board.stream.models.TradeData;
+import cn.hanli.mv.board.models.TradeData;
 import cn.hanli.mw.board.stream.processors.TradeStreamProcessor;
 import cn.hanli.mw.board.stream.utils.LatestOffSetReader;
 import cn.hanli.mw.board.stream.utils.PropertyFileReader;

@@ -1,6 +1,6 @@
 package cn.hanli.mw.board.stream.processors;
 
-import cn.hanli.mw.board.stream.models.TradeData;
+import cn.hanli.mv.board.models.TradeData;
 import cn.hanli.mw.board.stream.processors.filters.RealtimeTradeFilter;
 import lombok.extern.log4j.Log4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
@@ -27,7 +27,7 @@ import java.util.Map;
  * Modified by Han Li at 2/6/2021 8:46 上午
  */
 @Log4j
-public class TradeStreamProcessor extends KafkaStreamProcessor<TradeData> {
+public class TradeStreamProcessor extends SparkStreamProcessor<TradeData> {
 
     /**
      * 创建流处理器并指定源流

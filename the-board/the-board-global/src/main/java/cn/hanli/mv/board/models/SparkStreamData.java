@@ -1,4 +1,4 @@
-package cn.hanli.mw.board.stream.models;
+package cn.hanli.mv.board.models;
 
 import lombok.Getter;
 import lombok.Setter;

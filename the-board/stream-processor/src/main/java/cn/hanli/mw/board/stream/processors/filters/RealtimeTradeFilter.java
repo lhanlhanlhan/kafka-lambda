@@ -1,8 +1,8 @@
 package cn.hanli.mw.board.stream.processors.filters;
 
-import cn.hanli.mw.board.stream.models.TradeData;
-import cn.hanli.mw.board.stream.processors.entities.CityTotalTradeAmount;
-import cn.hanli.mw.board.stream.processors.entities.CityTotalTradeNumber;
+import cn.hanli.mv.board.models.TradeData;
+import cn.hanli.mv.board.models.entities.CityTotalTradeAmount;
+import cn.hanli.mv.board.models.entities.CityTotalTradeNumber;
 import com.datastax.spark.connector.japi.CassandraJavaUtil;
 import org.apache.spark.api.java.Optional;
 import org.apache.spark.streaming.Durations;

@@ -6,13 +6,14 @@
     <version>1.0.0</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
-  <artifactId>data-producer</artifactId>
-  <name>Producer</name>
+  <artifactId>batch-processor</artifactId>
+  <name>Batch Processor</name>
   <version>1.0.0</version>
   <build>
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.0</version>
         <configuration>
           <source>1.8</source>
           <target>1.8</target>
@@ -43,7 +44,7 @@
                   <resource>reference.conf</resource>
                 </transformer>
                 <transformer>
-                  <mainClass>cn.hanli.mw.board.data.ProducerApplication</mainClass>
+                  <mainClass>cn.hanli.mw.board.batch.BatchProcessorApplication</mainClass>
                 </transformer>
               </transformers>
             </configuration>
@@ -52,5 +53,11 @@
       </plugin>
     </plugins>
   </build>
+  <properties>
+    <java.version>1.8</java.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <spark-version>3.1.0</spark-version>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+  </properties>
 </project>
 

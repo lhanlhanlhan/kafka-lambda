@@ -19,6 +19,12 @@
     <name>Big Board</name>
 
     <dependencies>
+        <!-- 本项目核心 -->
+        <dependency>
+            <groupId>cn.hanli.mw.board</groupId>
+            <artifactId>the-board-global</artifactId>
+            <version>${version}</version>
+        </dependency>
         <!-- 基于 WebSocket 的 Spring Boot -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

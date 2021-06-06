@@ -153,7 +153,6 @@
     <orderEntry type="library" name="Maven: org.apache.spark:spark-tags_2.12:3.1.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-crypto:1.1.0" level="project" />
     <orderEntry type="library" name="Maven: org.spark-project.spark:unused:1.0.0" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.spark:spark-streaming_2.12:3.1.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.spark:spark-sql_2.12:3.1.0" level="project" />
     <orderEntry type="library" name="Maven: com.univocity:univocity-parsers:2.9.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.spark:spark-sketch_2.12:3.1.0" level="project" />
@@ -181,9 +180,6 @@
     <orderEntry type="library" name="Maven: org.apache.parquet:parquet-hadoop:1.10.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.parquet:parquet-format:2.4.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.parquet:parquet-jackson:1.10.1" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.spark:spark-streaming-kafka-0-10_2.12:3.1.0" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.spark:spark-token-provider-kafka-0-10_2.12:3.1.0" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.kafka:kafka-clients:2.6.0" level="project" />
     <orderEntry type="library" name="Maven: com.datastax.spark:spark-cassandra-connector_2.12:3.0.0" level="project" />
     <orderEntry type="library" name="Maven: com.datastax.spark:spark-cassandra-connector-driver_2.12:3.0.0" level="project" />
     <orderEntry type="library" name="Maven: com.datastax.oss:java-driver-core-shaded:4.7.2" level="project" />

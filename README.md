@@ -50,6 +50,12 @@ In directory ```the-board```, go through the following steps:
    docker exec b-spark-master /spark/bin/spark-submit --class cn.hanli.mw.board.stream.StreamProcessorApplication --master spark://spark-master:7077 /app/stream-processor-1.0.0.jar
    ```
 
+   or, if you want to run in daemon (detached), try:
+
+   ```shell
+   docker exec -d b-spark-master /spark/bin/spark-submit --class cn.hanli.mw.board.stream.StreamProcessorApplication --master spark://spark-master:7077 /app/stream-processor-1.0.0.jar
+   ```
+
 6. If everything seems normal, run Data Producer on host machine:
 
    ```shell

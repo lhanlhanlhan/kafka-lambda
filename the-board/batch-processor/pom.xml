@@ -7,12 +7,18 @@
         <groupId>cn.hanli.mw.board</groupId>
         <version>1.0.0</version>
     </parent>
-
     <modelVersion>4.0.0</modelVersion>
     <version>1.0.0</version>
     <packaging>jar</packaging>
-    <artifactId>data-producer</artifactId>
-    <name>Producer</name>
+    <name>Batch Processor</name>
+    <artifactId>batch-processor</artifactId>
+
+    <properties>
+        <spark-version>3.1.0</spark-version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+    </properties>
 
     <dependencies>
         <!-- 本项目核心 -->
@@ -21,33 +27,28 @@
             <artifactId>the-board-global</artifactId>
             <version>${version}</version>
         </dependency>
-        <!-- Kafka -->
+        <!-- Spark -->
         <dependency>
-            <groupId>org.apache.kafka</groupId>
-            <artifactId>kafka_2.10</artifactId>
-            <version>0.8.1</version>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-core_2.12</artifactId>
+            <version>${spark-version}</version>
         </dependency>
-        <!-- Jackson Json -->
+        <!-- Spark SQL -->
         <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-core</artifactId>
-            <version>2.12.1</version>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-sql_2.12</artifactId>
+            <version>${spark-version}</version>
+        </dependency>
+        <!-- Spark Cassandra Connector -->
+        <dependency>
+            <groupId>com.datastax.spark</groupId>
+            <artifactId>spark-cassandra-connector_2.12</artifactId>
+            <version>3.0.0</version>
         </dependency>
         <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.12.1</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-annotations</artifactId>
-            <version>2.12.1</version>
-        </dependency>
-        <!-- JSR310 数据类型支持 -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.datatype</groupId>
-            <artifactId>jackson-datatype-jsr310</artifactId>
-            <version>2.11.4</version>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>2.10.9</version>
         </dependency>
         <!-- Logger -->
         <dependency>
@@ -65,9 +66,11 @@
 
     <build>
         <plugins>
+            <!-- 编译器 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.0</version>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
@@ -102,7 +105,7 @@
                                 </transformer>
                                 <transformer
                                         implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>cn.hanli.mw.board.data.ProducerApplication</mainClass>
+                                    <mainClass>cn.hanli.mw.board.batch.BatchProcessorApplication</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>

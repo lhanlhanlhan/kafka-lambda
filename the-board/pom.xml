@@ -11,6 +11,8 @@
         <module>data-producer</module>
         <module>stream-processor</module>
         <module>big-board</module>
+        <module>batch-processor</module>
+        <module>the-board-global</module>
     </modules>
 
     <properties>

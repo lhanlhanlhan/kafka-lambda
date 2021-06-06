@@ -1,6 +1,6 @@
 package cn.hanli.mw.board.stream.decoders;
 
-import cn.hanli.mw.board.stream.models.TradeData;
+import cn.hanli.mv.board.models.TradeData;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.kafka.common.serialization.Deserializer;
 
