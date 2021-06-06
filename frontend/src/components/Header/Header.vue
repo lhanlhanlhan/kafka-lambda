@@ -16,7 +16,7 @@
     <a class="navbarBrand d-md-none">
       <i class="fa fa-circle text-danger" />
       &nbsp;
-      ^_^ 您居然还用手机看啊
+      =_= 宁的屏幕有够窄的 建议换电脑
       &nbsp;
       <i class="fa fa-circle text-primary" />
     </a>
