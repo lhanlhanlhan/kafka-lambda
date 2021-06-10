@@ -12,13 +12,19 @@
               <div
                 class="widget-padding-md w-100 h-100 text-center border rounded"
               >
-                <p>全国总销售额</p>
-                <span class="display-2 text-warning">
+                <p>全国总销售额 (自 2021-6-6 10:00)</p>
+                <span class="display-2 text-warning" v-if="ready">
                   <strong>$ {{ totalAmount / 100.0 }}</strong>
                 </span>
+                <span class="display-2 text-warning" v-else>
+                  <strong>载入中</strong>
+                </span>
                 <p>全国订单笔数</p>
-                <span class="display-3">
+                <span class="display-3" v-if="ready">
                   {{ totalTrade }}
+                </span>
+                <span class="display-3" v-else>
+                  请稍候
                 </span>
               </div>
             </Widget>
@@ -111,6 +117,8 @@ export default {
       sortedCityAmount: [{ city: "南宁", amount: 1211231 }],
       totalAmount: 1211231,
       totalTrade: 2283,
+
+      ready: false,
     };
   },
   methods: {
@@ -150,7 +158,7 @@ export default {
       {},
       () => {
         // 订阅 ws 话题
-        that.wsClient.subscribe("/topic/the-board", (msg) => {
+        that.wsClient.subscribe("/topic/the-board", msg => {
           let msgBody = JSON.parse(msg.body);
           let cityTotalAmount = msgBody.cityTotalAmount;
           let cityTotalTrade = msgBody.cityTotalTrade;
@@ -158,6 +166,7 @@ export default {
           that.makePieCityAmount(cityTotalAmount);
           that.makePieCityTrade(cityTotalTrade);
           that.makeTuHaoCityList(cityTotalAmount);
+          that.ready = true;
         });
       },
       (err) => {
